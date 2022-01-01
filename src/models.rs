@@ -3,6 +3,7 @@ use rocket::form::{FromForm};
 
 #[derive(FromForm)]
 pub struct TodoDesc<'r> {
+    #[field(name = "todo_desc")]
     pub description: &'r str,
 }
 

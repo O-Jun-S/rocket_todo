@@ -24,7 +24,7 @@ fn index() -> Template {
 #[rocket::post("/create", data = "<todo_desc>")]
 async fn create_todo(todo_desc: Option<Form<models::TodoDesc<'_>>>) -> rocket::serde::json::Json<models::Todo> {
     let desc: String = match todo_desc {
-        Some(d) => d.description.to_string(),
+        Some(d) => d.into_inner().description.to_string(),
         None => "".to_string(),
     };
 
