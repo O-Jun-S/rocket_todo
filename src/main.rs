@@ -1,4 +1,4 @@
-#[macro_use] extern crate rocket;
+extern crate rocket;
 
 #[rocket::get("/")]
 fn index() -> &'static str {
