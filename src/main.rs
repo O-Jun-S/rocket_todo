@@ -9,7 +9,7 @@ use rocket_dyn_templates::Template;
 
 
 #[derive(serde::Serialize)]
-struct test {
+struct Empty {
 }
 
 
