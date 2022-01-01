@@ -15,7 +15,7 @@ struct Empty {
 
 #[rocket::get("/")]
 fn index() -> Template {
-    let context = test{};
+    let context = Empty{};
     Template::render("index", &context)
 }
 
