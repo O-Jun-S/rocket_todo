@@ -14,7 +14,9 @@ struct Empty {
 #[rocket::main]
 async fn main() {
     let app = rocket::build()
-            .mount("/", rocket::routes![routes::index::index, routes::create::create_todo])
+            .mount("/", rocket::routes![routes::index::index])
+            .mount("/", rocket::routes![routes::create::create_todo])
+            .mount("/", rocket::routes![routes::read_cookie::read_cookie])
             .attach(Template::fairing())
             .launch()
             .await;
