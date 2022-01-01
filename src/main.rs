@@ -5,7 +5,6 @@ extern crate rocket_dyn_templates;
 extern crate serde;
 
 use rocket::form::Form;
-use rocket::http::{CookieJar, Cookie};
 use rocket_dyn_templates::Template;
 
 
@@ -22,12 +21,16 @@ fn index() -> Template {
 
 
 // number: the numbe of todo tasks
-#[rocket::post("/create", data = "<todo>")]
-async fn create_todo(todo: Option<Form<models::Todo<'_>>>) -> String {
-    match todo {
-        Some(todo) => format!("A todo: {} has just been created!", todo.description),
-        None => "Failed to make todo.".to_string(),
-    }
+#[rocket::post("/create", data = "<todo_desc>")]
+async fn create_todo(todo_desc: Option<Form<models::TodoDesc<'_>>>) -> rocket::serde::json::Json<models::Todo> {
+    let desc: String = match todo_desc {
+        Some(d) => d.description.to_string(),
+        None => "".to_string(),
+    };
+
+    let todo = models::Todo{ description: desc, completed: false };
+
+    rocket::serde::json::Json(todo)
 }
 
 

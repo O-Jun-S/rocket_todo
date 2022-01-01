@@ -1,10 +1,14 @@
+use rocket::serde::{Serialize, Deserialize};
 use rocket::form::{FromForm};
 
 #[derive(FromForm)]
-pub struct Todo<'r> {
-    #[field(validate = len(1..))]
+pub struct TodoDesc<'r> {
     pub description: &'r str,
+}
 
-    #[field(name = "done")]
-    completed: bool,
+
+#[derive(Serialize, Deserialize)]
+pub struct Todo {
+    pub description: String,
+    pub completed: bool,
 }

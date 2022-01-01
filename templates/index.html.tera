@@ -10,9 +10,9 @@
     <h1>TODO Application</h1>
 
     <form action="/create" method="post" class="todo_create">
-        <div class="todo_description">
-            <label for="description">Task Description: </label>
-            <input type="text" name="description" id="description" required>
+        <div class="todo_desc">
+            <label for="todo_desc">Task Description: </label>
+            <input type="text" name="todo_desc" id="todo_desc" required>
         </div>
 
         <div class="todo_submit">
