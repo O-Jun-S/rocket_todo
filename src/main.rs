@@ -20,7 +20,7 @@ fn index() -> Template {
 }
 
 
-// number: the numbe of todo tasks
+// number: the number of todo tasks
 #[rocket::post("/create", data = "<todo_desc>")]
 async fn create_todo(todo_desc: Option<Form<models::TodoDesc<'_>>>) -> rocket::serde::json::Json<models::Todo> {
     let desc: String = match todo_desc {
