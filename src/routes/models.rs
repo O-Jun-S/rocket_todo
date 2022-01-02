@@ -8,7 +8,7 @@ pub struct TodoDesc<'r> {
 }
 
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Todo {
     pub description: String,
     pub completed: bool,
